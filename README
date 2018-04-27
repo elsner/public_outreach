@@ -1,0 +1,34 @@
+
+DESCRIPTION
+
+       A public outreach project in cosmology aimed at high school
+       students at the age of about 15. It provides a first glimpse at
+       the basic properties of the cosmic microwave background
+       radiation (CMB) and what it can tell us about our Universe.
+
+       The project consists of a LaTeX document (in German language)
+       with brief explanations and problems, and a simple computer
+       program that allows to easily explore fundamental properties of
+       the CMB in a hands-on way.
+
+
+INSTALLATION
+
+       Prerequisites: - Healpy [1]
+                      - CAMB [2]
+                      - Jupyter/Python2 [3]
+
+       Install the required software. Download a map of the cleaned
+       CMB in fits format, e.g., the Smica map from the Planck legacy
+       archive [4]. Optionally, for a faster analysis, downgrade the
+       map to nside = 512 and deconvolve beam and pixel window
+       functions.
+
+       Execute the Jupyter notebook cmb.ipynb and adjust the variables
+       'file_*' to reflect the location of CAMB executable, CAMB
+       parameter file, and CMB map on your machine.
+
+       [1] https://github.com/healpy/healpy
+       [2] https://github.com/cmbant/CAMB
+       [3] http://jupyter.org
+       [4] http://pla.esac.esa.int/pla

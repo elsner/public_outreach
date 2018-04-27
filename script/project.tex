@@ -1,0 +1,258 @@
+%
+% Copyright (C) 2018 Franz Elsner <f.elsner[AT]mpa-garching.mpg.de>
+%
+
+\documentclass[12pt,twoside,a4paper]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fontawesome}
+\usepackage{pstricks}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{xspace}
+\xspaceaddexceptions{]\}}
+
+\lstset{frame=tb,
+  language=Python,
+  basicstyle=\ttm,
+  aboveskip=1ex,
+  belowskip=1ex,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  breaklines=false,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\newcommand{\cmb}{\emph{CMB}\xspace}
+\newcommand{\plus}{\raisebox{-0.3ex}{\faPlusSquareO}\xspace}
+
+
+\begin{document}
+
+\title{Projekt zur kosmischen Mikrowellenhintergrundstrahlung}
+
+\author{Franz Elsner\\felsner[AT]mpa-garching.mpg.de}
+
+\maketitle
+
+\begin{center}
+  \includegraphics[width=\textwidth]{planck}
+\end{center}
+
+
+
+\section{\"Ubersicht}
+
+Die kosmische Mikrowellenhintergrundstrahlung (englisch: \emph{cosmic
+  microwave background radiation}, oder abgek\"urzt \cmb) ist ein
+Relikt des Urknalls. Sie gibt uns direkte Hinweise auf die
+Entstehungsgeschichte unseres Universums. In diesem Projekt versuchen
+wir, einige davon zu reproduzieren.
+
+
+\subsection{Aufgaben}
+
+\begin{enumerate}
+\item Recherchiere im Internet und versuche herauszufinden, wie alt
+  das Universum war, als das Licht des \cmb emittiert wurde. Welches
+  Alter hat das Universum heute und wie alt ist im Vergleich dazu
+  beispielsweise unsere Erde?
+ \item Astronomen haben eine eigene Einheit eingef\"uhrt, um die
+   typischerweise sehr gro{\ss}en Distanzen im Universum zu messen: das
+   \emph{Parsec}. Das Licht des Mikrowellenhintergrunds hat auf seinem
+   Weg zu uns eine Distanz von etwa 14 Gigaparsec zur\"uckgelegt, also
+   14 Milliarden Parsec. Wieviele Kilometer sind das?
+\end{enumerate}
+
+
+
+\section{Rotverschiebung}
+
+Die kosmische Hintegrundstrahlung wurde im fr\"uhen Universum als
+sogenannte Schwarz\-k\"orperstrahlung mit einer Temperatur von etwa
+3000 Kelvin emittiert (das sind n\"aherungsweise $2700 \,
+^{\circ}\mathrm{C}$). Das entspricht in etwa der Temperatur und Farbe
+des Gl\"uhfadens einer herk\"omm\-lichen Gl\"uhlampe. Heute k\"onnen
+wir die Hintergrundstrahlung jedoch nicht mehr mit dem blo{\ss}em Auge
+erkennen, da das Licht einen Gro{\ss}teil seiner Energie
+eingeb\"u{\ss}t hat.
+
+
+\subsection{Aufgaben}
+
+\begin{enumerate}
+  \setcounter{enumi}{2}
+\item Auch jetzt noch l\"asst sich der \cmb als
+  Schwarzk\"orperstrahlung beschreiben. Welche Temperatur w\"urden wir
+  ihm heute zuordnen?
+\item Wurde die Strahlung also zu k\"urzeren (Richtung
+  R\"ontgenstrahlen) oder l\"angeren Wellenl\"angen (in den
+  Radiobereich) verschoben? Wieso sprechen wir von der
+  \emph{Mikrowellen}hintergrundstrahlung?
+\item Wissenschaftler glauben, dass das Universum in einem hei{\ss}en
+  Urknall entstanden ist und sich seitdem ausdehnt, was unter anderem
+  eine generelle Abk\"uhlung zur Folge hat. Was glaubst Du -- steht
+  die Mikrowellenhintergrundstrahlung mit dieser Annahme im
+  Widerspruch?
+\end{enumerate}
+
+
+
+\section{Darstellung des Datensatzes}
+
+Wir wollen uns nun die Mikrowellenhintergrundstrahlung genauer
+ansehen. Dazu verwenden wir Messungen, die vor wenigen Jahren mit dem
+Weltraumteleskop \emph{Planck} gemacht worden sind. F\"ur die Analyse
+steht ein Softwareprogramm zur Verf\"ugung, das auf den Rechnern
+installiert ist.
+
+
+\subsection{Aufgaben}
+
+\begin{enumerate}
+  \setcounter{enumi}{5}
+\item Starte das bereitgestellte Python Notebook durch einen
+  Doppelklick auf das Desktop Icon (das wird einen Moment dauern) und
+  dr\"ucke dann die Tastenkombination `Shift + Enter' um die
+  vordefinierten Funktionen verf\"ugbar zu machen, die wir f\"ur
+  unsere Analyse brauchen. Lade dann den \cmb Datensatz. Schreibe dazu
+  den untenstehenden Befehl in eine leere Zelle am Ende des Notebooks
+  (durch dr\"ucken des Knopfs mit dem Zeichen \plus kannst Du
+  jederzeit eine neue Zelle anh\"angen). F\"uhre Deinen Befehl dann
+  wieder durch die Tastenkombination `Shift + Enter' aus.
+
+  Zeilen, die mit dem Zeichen "\texttt{\#}" beginnen sind Kommentare
+  und werden vom Computer ignoriert, sie dienen lediglich der
+  Dokumentation Deines Programms.
+\end{enumerate}
+\vspace{-1ex}
+\begin{lstlisting}
+  # Load CMB data
+  cmb_map = load_cmb_data()
+\end{lstlisting}
+\begin{enumerate}
+  \setcounter{enumi}{6}
+\item Generiere ein Bild des \cmb mit der zugeh\"origen Funktion, die
+  Du wieder mit `Shift + Enter' ausf\"uhrst. Es handelt sich hierbei
+  um eine Projektion des vollst\"andigen Himmels in eine
+  zweidimensionale Ebene, die sich dann gut auf dem Bildschirm
+  darstellen l\"asst (\"ahnlich der Konstruktion einer Weltkarte, die
+  eine vereinfachende Projektion der etwa kugelf\"ormigen
+  Erdoberfl\"ache ist). Das Bild der Karte ist in der Einheit
+  \emph{Kelvin} angegeben, also einer Temperatur. Genauer gesagt zeigt
+  die Karte Temperaturschwankungen um einen Mittelwert, der hier auf
+  Null gesetzt wurde. Klicke mit der Maus auf verschiedene Regionen in
+  der Karte, um sie zu vergr\"o{\ss}ern -- wie gro{\ss} sind die
+  Abweichungen vom Mittelwert typischerweise? Vergleiche diesen
+  Zahlenwert mit Deinem Ergebnis aus Aufgabe (3). Sind diese
+  Schwankungen in jeder Himmelsrichtung \"ahnlich gro{\ss}?
+\end{enumerate}
+\vspace{-1ex}
+\begin{lstlisting}
+  # Plot CMB map
+  plot_cmb_map(cmb_map, figure=1, title='CMB')
+\end{lstlisting}
+
+
+
+
+\section{Kosmologische Parameter}
+
+Durch die Analyse der statistischen Eigenschaften der
+Hintergrundstrahlung lassen sich genaue R\"uckschl\"usse auf
+die grundlegende Beschaffenheit unseres Universums ziehen.
+
+
+\subsection{Aufgaben}
+
+\begin{enumerate}
+  \setcounter{enumi}{7}
+\item Wir k\"onnen die Hintergrundstrahlung benutzen, um Parameter zu
+  bestimmen, die unser Universum beschreiben. Versuche ein Beispiel
+  f\"ur einen solchen Parameter zu finden. Was beschreibt etwa die
+  sogenannte \emph{Hubble Konstante}? Was glaubst Du -- hat sie auch
+  einen Einfluss auf die Hintergrundstrahlung?
+\item Das Programm erlaubt, den Effekt der kosmologischen Parameter
+  auf die Hintergrundstrahlung zu simulieren. Verwende eine neue Zelle
+  (\plus) und variiere mit den untenstehenden Befehlen einen der
+  kosmologischen Parameter in dem angegebenen Zahlenbereich. Versuche
+  zu beschreiben, wie sich das Bild der Hintergrundstrahlung dadurch
+  ver\"andert.
+\end{enumerate}
+\vspace{-1ex}
+\begin{lstlisting}
+  # Try values for the spectral index between 0 and 2
+  cosmology = {"scalar_spectral_index(1)": 0.1}
+
+  # Rescale map to new cosmology
+  rescaled_cmb_map = camb.rescale_cmb_map(cmb_map, cosmology)
+
+  # Plot rescaled map
+  plot_cmb_map(rescaled_cmb_map, figure=2, title='Rescaled CMB')
+\end{lstlisting}
+\vspace{-1ex}
+\begin{enumerate}
+\item[] Kannst Du einen Zahlenwert finden, f\"ur den das Bild der
+  tats\"achlichen Karte aus Aufgabe (7) \"ahnelt? Damit hast Du
+  erfolgreich einen kosmologischen Parameter unseres Universums
+  bestimmt!
+\setcounter{enumi}{9}
+\item Von einer anderen Position im Weltall aus betrachtet
+  (z.B.\ einer sehr weit entfernten Galaxie), ver\"andert sich das
+  Aussehen des Mikrowellenhintergrunds, auch wenn sich die
+  grundlegenden Eigenschaften des Universums nat\"urlich nicht
+  ge\"andert haben. Erstelle eine neue Zelle (\plus) und nutze dann
+  die Software, um eine alternative Realisation des \cmb auf dem
+  Computer zu simulieren und darzustellen. Auch wenn sich das Bild nun
+  grundlegend ver\"andert hat -- kannst Du vielleicht trotzdem
+  \"Ubereinstimm\-ungen mit dem tats\"achlichen Datensatz finden?
+\end{enumerate}
+\vspace{-1ex}
+\begin{lstlisting}
+  # Simulate CMB map
+  simulated_cmb_map = camb.simulate_cmb_map()
+
+  # Plot simulated map
+  plot_cmb_map(simulated_cmb_map, figure=3, title='Simulated CMB')
+\end{lstlisting}
+
+
+
+\section{Zusatzaufgabe: Analyse der Fluktuationen im \cmb}
+
+Zur Analyse der Hintergrundstrahlung verwenden Wissenschaftler das
+sogenannte \emph{power spectrum} (zu deutsch: spektrale
+Leistungsdichte). Diese statistische Gr\"o{\ss}e beschreibt, wie stark
+der Datensatz typischerweise in zwei Punkten variiert, die eine
+bestimmte Distanz voneinander haben.
+
+\begin{enumerate}
+  \setcounter{enumi}{10}
+\item Nutze die Software, um das \emph{power spectrum} des \cmb zu
+  berechnen und darzustellen. Verwende daf\"ur die untenstehende
+  Funktion in einer neuen Zelle (\plus), wobei Du die Variable `KARTE'
+  mit der Karte ersetzen musst, die Du analysieren
+  m\"ochtest. Beschreibe die Form der Kurve, die angezeigt wird.
+\end{enumerate}
+\vspace{-1ex}
+\begin{lstlisting}
+  plot_power_spectrum(KARTE, figure=4)
+\end{lstlisting}
+\begin{enumerate}
+  \setcounter{enumi}{11}
+\item Welchen Einfluss haben die kosmologischen Parameter auf das
+  \emph{power spectrum}? Nutze die Software, um das \emph{power
+    spectrum} einer modifizierten Karte des \cmb zu bestimmen, die Du
+  in Aufgabe (9) berechnet hast. Wie hat es sich ver\"andert?
+\item Vergleiche das \emph{power spectrum} des echten \cmb mit dem
+  Deiner simulierten \cmb Karte aus Aufgabe (10). Was stellst Du hier
+  fest?
+\end{enumerate}
+
+\end{document}
